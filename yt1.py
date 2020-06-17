@@ -1,22 +1,27 @@
-import discord
+'''
+DISCORD BOT TUTORIAL SERIES PART 2
+BY: MysteriousK
+CAN BE FOUND ON MY YT TOO!
+'''
+import discord # making imports
 from discord.ext import commands
 from discord.ext.commands import bot
 
-bot = commands.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix="!") # prefix
 
 @bot.event
 async def on_ready(): # on_ready func
     print("The bot is online!")
 
 @bot.command()
-@commands.cooldown(1, 3, commands.BucketType.user)
+@commands.cooldown(1, 3, commands.BucketType.user) #cooldown
 async def hello(ctx):
     await ctx.send("sup kiddo :wave:")
     print("A random nerd used the hello command!")
 
 @bot.command()
 @commands.cooldown(1, 3, commands.BucketType.user)
-@commands.has_role('Admin')
+@commands.has_role('Admin') # role req
 async def ban(ctx, member: discord.Member, content):
     await ctx.send("I Successfully Banned") # send msg in channel
     await member.send(f"You were banned for {content} get rekt") # send dm
